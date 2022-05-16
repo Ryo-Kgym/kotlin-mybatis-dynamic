@@ -1,0 +1,22 @@
+version: '3'
+services:
+  sample_data_source:
+    platform: linux/x86_64
+    container_name: sample_data_source
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: sample
+      MYSQL_PASSWORD: sample
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 33306:3306
+    volumes:
+      - ./doc/ddl_dml/full:/docker-entrypoint-initdb.d
+      - ./docker/db/data/ci:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+volumes:
+  database:
+    driver: local

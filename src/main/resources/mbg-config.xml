@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD
+  MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3Kotlin">
+
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:33306/sample_db"
+                userId="sample"
+                password="sample">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+            <property name="useJSR310Types" value="true" />
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetPackage="com.example.kotlinmybatisdynamic.persistence.database.mysql.table"
+                targetProject="/Users/ryok/Documents/Develop/kotlin-mybatis-dynamic/src/main/kotlin">
+        </javaModelGenerator>
+        <javaClientGenerator
+                targetPackage="com.example.kotlinmybatisdynamic.persistence.database.mysql.table"
+                targetProject="/Users/ryok/Documents/Develop/kotlin-mybatis-dynamic/src/main/kotlin">
+        </javaClientGenerator>
+
+        <table tableName="sample" modelType="flat" mapperName="DbSampleMapper" domainObjectName="DbSample">
+        </table>
+
+    </context>
+</generatorConfiguration>
